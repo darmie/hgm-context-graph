@@ -103,7 +103,7 @@ style: |
 <!-- _backgroundColor: #6b21a8 -->
 <!-- _color: #ffffff -->
 <style scoped>
-h1, h2, p, strong { color: #ffffff !important; }
+h1, h2, p, strong, a { color: #ffffff !important; }
 h1 { border-bottom-color: #ffffff; }
 </style>
 
@@ -112,6 +112,9 @@ h1 { border-bottom-color: #ffffff; }
 ## Building Cognitive Memory for AI Agents
 
 **Context Engineering | Agent State | Agentic RAG | Memory Systems**
+
+**Damilare Akinlaja**
+<img src="https://cdn.simpleicons.org/github/white" width="20" height="20" style="vertical-align: middle;" /> [github.com/darmie](https://github.com/darmie) | <img src="https://cdn.simpleicons.org/x/white" width="18" height="18" style="vertical-align: middle;" /> [x.com/fourEyedWiz](https://x.com/fourEyedWiz)
 
 ---
 
@@ -1023,7 +1026,7 @@ adjusted = 0.6×rule_based + 0.4×llm_relevance + adjustment
 <!-- _backgroundColor: #6b21a8 -->
 <!-- _color: #ffffff -->
 <style scoped>
-h1, h2, p, strong { color: #ffffff !important; }
+h1, h2, p, strong, a { color: #ffffff !important; }
 h1 { border-bottom-color: #ffffff; }
 </style>
 
@@ -1032,6 +1035,9 @@ h1 { border-bottom-color: #ffffff; }
 ## Questions?
 
 **HGM: Cognitive infrastructure for AI that learns.**
+
+**Damilare Akinlaja**
+<img src="https://cdn.simpleicons.org/github/white" width="20" height="20" style="vertical-align: middle;" /> [github.com/darmie](https://github.com/darmie) | <img src="https://cdn.simpleicons.org/x/white" width="18" height="18" style="vertical-align: middle;" /> [x.com/fourEyedWiz](https://x.com/fourEyedWiz)
 
 ---
 
