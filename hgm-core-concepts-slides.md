@@ -173,7 +173,12 @@ HGM synthesizes these ideas into a unified system.
 ---
 
 <!-- _class: purple-bg -->
-<!-- _color: white -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
 
 # Section 1
 ## Memory Types
@@ -228,7 +233,12 @@ class Memory:
 ---
 
 <!-- _class: purple-bg -->
-<!-- _color: white -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
 
 # Section 2
 ## Agent State Management
@@ -278,7 +288,12 @@ Detecting topic changes helps archive context and reset focus.
 ---
 
 <!-- _class: purple-bg -->
-<!-- _color: white -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
 
 # Section 3
 ## Temperature Scoring
@@ -337,7 +352,12 @@ temperature = 0.30 × recency
 ---
 
 <!-- _class: purple-bg -->
-<!-- _color: white -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
 
 # Section 4
 ## Three-Tier Memory Architecture
@@ -401,7 +421,12 @@ class HotTier:
 ---
 
 <!-- _class: purple-bg -->
-<!-- _color: white -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
 
 # Section 5
 ## Agentic RAG
@@ -447,7 +472,12 @@ def recall(query, focus_entities):
 ---
 
 <!-- _class: purple-bg -->
-<!-- _color: white -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
 
 # Section 6
 ## Pattern Graph System
@@ -514,7 +544,12 @@ relevance = 0.40 × semantic_similarity
 ---
 
 <!-- _class: purple-bg -->
-<!-- _color: white -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
 
 # Section 7
 ## Mode Selection
@@ -555,7 +590,12 @@ def select_mode(query, memories, patterns):
 ---
 
 <!-- _class: purple-bg -->
-<!-- _color: white -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
 
 # Section 8
 ## LLM-Driven Orchestration
@@ -632,7 +672,12 @@ llm = get_llm("mock")      # No API needed (for workshop)
 ---
 
 <!-- _class: purple-bg -->
-<!-- _color: white -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
 
 # The Complete Pipeline
 
@@ -907,7 +952,12 @@ class EnhancedModeSelector(ModeSelector):
 ---
 
 <!-- _class: purple-bg -->
-<!-- _color: white -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
 
 # Key Takeaways
 
@@ -969,7 +1019,12 @@ adjusted = 0.6×rule_based + 0.4×llm_relevance + adjustment
 ---
 
 <!-- _class: purple-bg -->
-<!-- _color: white -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
 
 # Thank You!
 
