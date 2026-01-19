@@ -118,6 +118,37 @@ h1 { border-bottom-color: #ffffff; }
 
 ---
 
+# Why Learn Context Engineering?
+
+| Aspect | Details |
+|--------|---------|
+| **Field** | AI/ML Engineering, LLM Application Development |
+| **Application Areas** | Chatbots, AI Assistants, Knowledge Management, RAG Systems |
+| **Industry Usage** | Tech, Finance, Healthcare, Legal, Customer Service |
+| **Career Impact** | High-demand skill for AI Engineers, 40%+ salary premium |
+
+**Who's Hiring**: OpenAI, Anthropic, Google, Microsoft, Amazon, startups building AI products
+
+---
+
+# Prerequisites & Target Audience
+
+**Target Audience:**
+- Software engineers building AI-powered applications
+- ML engineers working with LLMs
+- Technical leads designing agent architectures
+
+**Prerequisites:**
+- Basic Python programming
+- Understanding of LLMs and embeddings
+- Familiarity with vector databases (helpful, not required)
+
+**Pre-Reading:**
+- [Attention Is All You Need](https://arxiv.org/abs/1706.03762) - Transformer basics
+- [RAG Survey](https://arxiv.org/abs/2312.10997) - Retrieval-Augmented Generation overview
+
+---
+
 # Workshop Agenda
 
 1. **Context Engineering Landscape** - Where HGM fits
@@ -128,7 +159,7 @@ h1 { border-bottom-color: #ffffff; }
 6. **Agentic RAG** - Active recall with promotion
 7. **Pattern Graph** - Learned response strategies
 8. **LLM Orchestration** - Intelligent decision-making
-9. **Hands-on Exercises**
+9. **Hands-on Exercises & Quizzes**
 
 ---
 
@@ -139,12 +170,12 @@ h1 { border-bottom-color: #ffffff; }
 
 **The discipline of managing what information flows into an LLM's context window.**
 
-| Challenge | Impact |
-|-----------|--------|
-| Limited context (4K-200K tokens) | Can't include everything |
-| Token cost | More tokens = more $ |
-| Relevance matters | Irrelevant context = poor answers |
-| Static retrieval fails | Same docs regardless of context |
+| Challenge | Impact | Reference |
+|-----------|--------|-----------|
+| Limited context (4K-200K tokens) | Can't include everything | [MemGPT](https://arxiv.org/abs/2310.08560) |
+| Token cost | More tokens = more $ | [RAG Survey](https://arxiv.org/abs/2312.10997) |
+| Relevance matters | Irrelevant context = poor answers | [Generative Agents](https://arxiv.org/abs/2304.03442) |
+| Static retrieval fails | Same docs regardless of context | [ACE](https://arxiv.org/abs/2510.04618) |
 
 ---
 
@@ -163,14 +194,14 @@ Prompt Engineering → RAG v1 → RAG v2 → Agentic RAG → Context Engineering
 
 # Research Foundations
 
-| Paper | Key Contribution |
-|-------|------------------|
-| [**Generative Agents**](https://arxiv.org/abs/2304.03442) | Memory streams, recency × importance × relevance |
-| [**MemGPT**](https://arxiv.org/abs/2310.08560) | Virtual context management, paging |
-| [**Reflexion**](https://arxiv.org/abs/2303.11366) | Learning from failures |
-| [**RAPTOR**](https://arxiv.org/abs/2401.18059) | Recursive summarization trees |
-| [**ACE**](https://arxiv.org/abs/2510.04618) | Evolving context playbooks, self-improving agents |
-| **ACT-R / SOAR** | Cognitive architectures |
+| Paper | Key Contribution | Link |
+|-------|------------------|------|
+| **Generative Agents** | Memory streams, recency × importance × relevance | [arXiv](https://arxiv.org/abs/2304.03442) |
+| **MemGPT** | Virtual context management, paging | [arXiv](https://arxiv.org/abs/2310.08560) |
+| **Reflexion** | Learning from failures | [arXiv](https://arxiv.org/abs/2303.11366) |
+| **RAPTOR** | Recursive summarization trees | [arXiv](https://arxiv.org/abs/2401.18059) |
+| **ACE** | Evolving context playbooks, self-improving agents | [arXiv](https://arxiv.org/abs/2510.04618) |
+| **ACT-R / SOAR** | Cognitive architectures | — |
 
 HGM synthesizes these ideas into a unified system.
 
@@ -952,6 +983,256 @@ class EnhancedModeSelector(ModeSelector):
 ```
 
 **When should CLARIFICATION trigger?**
+
+---
+
+<!-- _class: purple-bg -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
+
+# Knowledge Check
+
+---
+
+# Quiz: Test Your Understanding
+
+**Q1**: What are the 5 factors in the temperature formula?
+<details>
+<summary>Answer</summary>
+Recency (30%), Frequency (15%), Relevance (35%), Entity Overlap (15%), Agent Match (5%)
+</details>
+
+**Q2**: When should a memory be promoted from Cold to Hot tier?
+<details>
+<summary>Answer</summary>
+When its temperature reaches ≥ 0.70
+</details>
+
+**Q3**: What's the difference between SEMANTIC and EPISODIC memory?
+<details>
+<summary>Answer</summary>
+SEMANTIC = facts/concepts ("Python is dynamically typed"), EPISODIC = events/experiences ("We discussed auth yesterday")
+</details>
+
+---
+
+# Brain Teasers
+
+**Scenario 1**: A user asks "How do I deploy?" but you have memories about Docker, Kubernetes, AND Heroku deployments. How does HGM decide which to surface?
+
+**Think about**: Entity overlap, recent access patterns, agent focus
+
+**Scenario 2**: An agent has been discussing Python for 10 turns, then user asks "What about types?" Should the system assume Python types or general type theory?
+
+**Think about**: Episode tracking, focus embedding, context continuity
+
+---
+
+<!-- _class: purple-bg -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
+
+# Real-World Applications
+
+---
+
+# Industry Use Cases
+
+| Industry | Application | HGM Benefit |
+|----------|-------------|-------------|
+| **Customer Service** | Support chatbots | Remember user history, preferences |
+| **Healthcare** | Clinical assistants | Track patient context across sessions |
+| **Finance** | Trading copilots | Recall relevant market patterns |
+| **Legal** | Contract analysis | Maintain case context, precedents |
+| **DevOps** | Incident response | Learn from past resolutions |
+
+---
+
+# Production Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     Load Balancer                            │
+└─────────────────────┬───────────────────────────────────────┘
+                      │
+┌─────────────────────▼───────────────────────────────────────┐
+│                   API Gateway                                │
+│              (Auth, Rate Limiting)                           │
+└─────────────────────┬───────────────────────────────────────┘
+                      │
+┌─────────────────────▼───────────────────────────────────────┐
+│              HGM Orchestration Service                       │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐        │
+│  │ Hot Tier│  │Warm Tier│  │Cold Tier│  │ Pattern │        │
+│  │ (Rust)  │  │ (Redis) │  │(Postgres)│  │  Graph  │        │
+│  └─────────┘  └─────────┘  └─────────┘  └─────────┘        │
+└─────────────────────┬───────────────────────────────────────┘
+                      │
+┌─────────────────────▼───────────────────────────────────────┐
+│                   LLM Provider                               │
+│           (OpenAI / Anthropic / Local)                       │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+# Real-World Scenario: Support Bot
+
+```
+Turn 1: User: "My payment failed"
+        → Store: [USER_QUERY] + [AGENT_THOUGHT: payment issue]
+        → Pattern match: payment_troubleshooting
+
+Turn 2: User: "I'm using a Visa card"
+        → Recall: Previous payment context (HOT)
+        → Update focus: payment + visa + card
+        → Promote: visa_specific_errors pattern
+
+Turn 3: User: "It says 'declined'"
+        → Full context: payment + visa + declined
+        → High-confidence pattern: card_declined_resolution
+        → Mode: PATTERN_DIRECT (skip LLM reasoning)
+```
+
+---
+
+<!-- _class: purple-bg -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
+
+# Practice Projects
+
+---
+
+# Project 1: Personal Knowledge Assistant
+
+**Goal**: Build a CLI assistant that remembers your notes
+
+**Requirements**:
+- Store notes with automatic memory type classification
+- Recall relevant notes based on queries
+- Track which notes you access frequently
+- Implement basic temperature scoring
+
+**Starter Code**: `projects/knowledge-assistant/`
+
+**Deliverable**: Working CLI that persists memories across sessions
+
+---
+
+# Project 2: Code Review Memory
+
+**Goal**: Agent that learns from past code reviews
+
+**Requirements**:
+- Parse PR comments and store as memories
+- Build pattern graph of common issues → fixes
+- When reviewing new code, suggest based on past patterns
+- Track which suggestions get accepted (feedback loop)
+
+**Challenge**: Implement effectiveness scoring for patterns
+
+**Deliverable**: GitHub Action or CLI tool
+
+---
+
+# Project Assignments
+
+| Project | Difficulty | Time | Skills Practiced |
+|---------|------------|------|------------------|
+| Knowledge Assistant | ⭐⭐ | 4-6 hrs | Memory types, temperature, recall |
+| Code Review Memory | ⭐⭐⭐ | 8-12 hrs | Pattern graph, mode selection |
+| Multi-Agent Chat | ⭐⭐⭐⭐ | 12-16 hrs | Agent context, episode management |
+| Production RAG | ⭐⭐⭐⭐⭐ | 20+ hrs | Full architecture, deployment |
+
+**Submission**: Push to GitHub, tag `@darmie` for review
+
+---
+
+<!-- _class: purple-bg -->
+<!-- _backgroundColor: #6b21a8 -->
+<!-- _color: #ffffff -->
+<style scoped>
+h1, h2, p, strong { color: #ffffff !important; }
+h1 { border-bottom-color: #ffffff; }
+</style>
+
+# State of the Art & Future
+
+---
+
+# Vendors & Production Solutions
+
+| Vendor | Product | Key Feature |
+|--------|---------|-------------|
+| **Mem0** | mem0.ai | Managed memory layer for LLM apps |
+| **Zep** | Zep Cloud | Long-term memory with temporal awareness |
+| **LangChain** | LangMem | Memory persistence for LangGraph agents |
+| **Pinecone** | Serverless | Vector DB with metadata filtering |
+| **Weaviate** | Hybrid Search | Vector + keyword search, multi-tenancy |
+| **Qdrant** | Qdrant Cloud | High-performance vector similarity |
+| **Chroma** | ChromaDB | Open-source embedding database |
+| **MongoDB** | Atlas Vector | Native vector search in MongoDB |
+
+---
+
+# Current Trends (2025)
+
+| Trend | Description | Impact |
+|-------|-------------|--------|
+| **Longer Contexts** | 1M+ token windows (Gemini, Claude) | Less need for retrieval, but cost ↑ |
+| **Structured Outputs** | Native JSON mode, tool use | Better pattern matching |
+| **Multi-Modal Memory** | Images, audio, video in context | Richer memory types |
+| **Agent Frameworks** | LangGraph, CrewAI, AutoGen | Standardized memory interfaces |
+| **Edge Deployment** | Local LLMs (Ollama, llama.cpp) | Privacy-first memory systems |
+
+---
+
+# Future Predictions
+
+**2025-2026:**
+- Memory systems become first-class framework features
+- Standardized memory interchange formats emerge
+- Real-time memory streaming for live agents
+
+**2027+:**
+- Persistent agent identities with lifelong memory
+- Cross-agent memory sharing protocols
+- Memory as a service (MaaS) platforms
+- Neuromorphic memory hardware acceleration
+
+**Key Insight**: Context engineering will be as fundamental as database design
+
+---
+
+# Further Reading
+
+**Advanced Topics:**
+- [A Survey on Large Language Model based Autonomous Agents](https://arxiv.org/abs/2308.11432)
+- [Cognitive Architectures for Language Agents](https://arxiv.org/abs/2309.02427)
+- [Tool Learning with Foundation Models](https://arxiv.org/abs/2304.08354)
+
+**Implementation:**
+- LangChain Memory modules
+- LlamaIndex storage contexts
+- Haystack document stores
+
+**Communities:**
+- r/LocalLLaMA, r/MachineLearning
+- AI Discord servers
+- HuggingFace forums
 
 ---
 
