@@ -468,6 +468,38 @@ h1 { border-bottom-color: #ffffff; }
 
 ---
 
+# What is RAG?
+
+**RAG (Retrieval-Augmented Generation)** enhances LLMs by retrieving relevant information from external knowledge bases before generating responses.
+
+```
+┌─────────────┐     ┌──────────────┐     ┌─────────────┐
+│   Query     │ ──▶ │   Retrieve   │ ──▶ │  Generate   │
+│  "How to    │     │  from Vector │     │  Response   │
+│   deploy?"  │     │     Store    │     │  with LLM   │
+└─────────────┘     └──────────────┘     └─────────────┘
+```
+
+**Traditional RAG**: Passive retrieval → Query once, return results, done.
+
+---
+
+# What Makes RAG "Agentic"?
+
+**Agentic RAG** adds autonomous decision-making and memory management:
+
+| Passive (Traditional) | Agentic |
+|----------------------|---------|
+| Retrieves documents | **Reorganizes** memories based on usage |
+| Static index | **Self-organizing** tiers (Hot/Warm/Cold) |
+| Treats all data equally | **Prioritizes** frequently accessed data |
+| No learning | **Learns** patterns over time |
+| One-shot retrieval | **Continuous** memory optimization |
+
+> **Key Insight**: The "agent" actively manages its own memory, promoting useful memories and demoting stale ones — just like human cognition.
+
+---
+
 # Traditional RAG vs Agentic RAG
 
 | Traditional RAG | Agentic RAG (HGM) |
@@ -1059,27 +1091,45 @@ h1 { border-bottom-color: #ffffff; }
 # Production Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                     Load Balancer                            │
-└─────────────────────┬───────────────────────────────────────┘
-                      │
-┌─────────────────────▼───────────────────────────────────────┐
-│                   API Gateway                                │
-│              (Auth, Rate Limiting)                           │
-└─────────────────────┬───────────────────────────────────────┘
-                      │
-┌─────────────────────▼───────────────────────────────────────┐
-│              HGM Orchestration Service                       │
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐        │
-│  │ Hot Tier│  │Warm Tier│  │Cold Tier│  │ Pattern │        │
-│  │ (Rust)  │  │ (Redis) │  │(Postgres)│  │  Graph  │        │
-│  └─────────┘  └─────────┘  └─────────┘  └─────────┘        │
-└─────────────────────┬───────────────────────────────────────┘
-                      │
-┌─────────────────────▼───────────────────────────────────────┐
-│                   LLM Provider                               │
-│           (OpenAI / Anthropic / Local)                       │
-└─────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────────────┐
+│                            DATA LAKE / KNOWLEDGE BASE                      │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
+│  │   OpenLink   │  │    Qdrant    │  │   Weaviate   │  │   MongoDB    │  │
+│  │   Virtuoso   │  │   (Vector)   │  │   (Hybrid)   │  │    Atlas     │  │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘  │
+└─────────┴─────────────────┴─────────────────┴─────────────────┴───────────┘
+                                      │
+                          ┌───────────▼───────────┐
+                          │   INGESTION PIPELINE  │
+                          │  (ETL + Embeddings)   │
+                          └───────────┬───────────┘
+                                      │ New data → Cold Tier
+┌─────────────────────────────────────▼─────────────────────────────────────┐
+│                         HGM AGENTIC ORCHESTRATOR                           │
+│                                                                            │
+│   ┌─────────────┐    temp ≥ 0.70    ┌─────────────┐    temp ≥ 0.70       │
+│   │  HOT TIER   │◄──────────────────│  WARM TIER  │◄──────────────┐      │
+│   │   (Rust)    │                   │   (Redis)   │               │      │
+│   │  In-Memory  │───────────────────▶│   Cache     │               │      │
+│   └─────────────┘    temp < 0.50    └─────────────┘               │      │
+│         │                                  │                       │      │
+│         │ temp < 0.50                      │ temp < 0.50           │      │
+│         ▼                                  ▼                       │      │
+│   ┌─────────────────────────────────────────────────────────┐     │      │
+│   │                      COLD TIER                           │─────┘      │
+│   │              (PostgreSQL + pgvector / Pinecone)          │◄─── Ingest │
+│   └─────────────────────────────────────────────────────────┘            │
+│                                                                            │
+│   ┌─────────────────────────────────────────────────────────┐            │
+│   │                    PATTERN GRAPH                         │            │
+│   │           (Neo4j / NetworkX / Custom Graph)              │            │
+│   └─────────────────────────────────────────────────────────┘            │
+└────────────────────────────────────┬──────────────────────────────────────┘
+                                     │
+┌────────────────────────────────────▼──────────────────────────────────────┐
+│                            LLM PROVIDER                                    │
+│              (OpenAI / Anthropic / Local Ollama / Azure)                   │
+└───────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
