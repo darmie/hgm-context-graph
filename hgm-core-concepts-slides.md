@@ -166,6 +166,7 @@ Prompt Engineering → RAG v1 → RAG v2 → Agentic RAG → Context Engineering
 | [**MemGPT**](https://arxiv.org/abs/2310.08560) | Virtual context management, paging |
 | [**Reflexion**](https://arxiv.org/abs/2303.11366) | Learning from failures |
 | [**RAPTOR**](https://arxiv.org/abs/2401.18059) | Recursive summarization trees |
+| [**ACE**](https://arxiv.org/abs/2510.04618) | Evolving context playbooks, self-improving agents |
 | **ACT-R / SOAR** | Cognitive architectures |
 
 HGM synthesizes these ideas into a unified system.
