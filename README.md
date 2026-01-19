@@ -42,26 +42,7 @@ pip install numpy jupyter
 uv pip install numpy jupyter
 ```
 
-### Option 2: Full HGM Development Setup
-
-For running the actual HGM system (not required for workshop):
-
-```bash
-# Clone and setup
-git clone https://github.com/darmie/hgm.git
-cd hgm
-
-# Start infrastructure
-cd docker && docker compose up -d && cd ..
-
-# Install Python packages
-uv sync
-
-# Build Rust extension
-cd hgm-core-rs && maturin develop --release && cd ..
-```
-
-### Option 3: VS Code Setup
+### Option 2: VS Code Setup
 
 1. Install [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 2. Install [Jupyter extension](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
